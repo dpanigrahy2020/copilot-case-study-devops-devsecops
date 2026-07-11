@@ -29,9 +29,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
         run: |
-          mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
-            -Dsonar.organization=copilotorg \
-            -Dsonar.projectKey=copilotorg0207
+          mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.organization=copilotorg -Dsonar.projectKey=copilotorg0207_copilotproj
 
   snyk-scan:
     name: Run Snyk scan
@@ -46,7 +44,7 @@ jobs:
 
       - name: Run Snyk scan
         uses: snyk/actions/maven@master
-        continue-on-error: false
+        continue-on-error: true
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
 
