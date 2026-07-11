@@ -62,4 +62,5 @@ jobs:
       - name: Run OWASP ZAP DAST scan
         uses: zaproxy/action-baseline@v0.14.0
         with:
+          allow_issue_writing: 'false'
           target: 'https://www.zaproxy.org'
